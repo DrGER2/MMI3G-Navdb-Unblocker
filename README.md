@@ -1,4 +1,4 @@
-# MMI3G-Navdb-Ublocker
+# MMI3G-Navdb-Unblocker
 Patch MMI3G/3GP systems to unblock access to an updated navigation database.
 
 As delivered from the factory, MMI 3G (High) and Plus systems navigation databases are activated with an FSC file stored in /mnt/efs-persist/FSC.
