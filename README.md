@@ -21,3 +21,5 @@ A simpler approach to the nav database unblocking work-around is to add the back
 called by system process srv-starter-QNX as defined by /etc/mmi3g-srv-starter.cfg, since the commands used by the sub-shell are stored in flash
 memory and available immediately. Inspection of /etc/mmi3g-srv-starter.cfg shows that shell script /usr/bin/manage_cd.sh is called relatively
 early in the boot process on both 3G High and Plus systems. The purpose of the script is to provide interface /dev/shmem/CD0_STARTED.
+
+To install the navigation database unblocker patch, extract the ZIP archive to a full-size FAT32 SD card.  After the MMI system is running fully, insert the SD card into an available (i.e., empty) SD slot and follow the prompts on the MMI screen.  Inspection of the log file created on the SD card is recommended (though not required).  Restart the MMI system.
