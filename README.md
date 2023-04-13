@@ -2,10 +2,10 @@
 Patch MMI3G/3GP systems to unblock access to an updated navigation database.
 
 As delivered from the factory, MMI 3G (High) and Plus systems navigation databases are activated with an FSC file stored in /mnt/efs-persist/FSC.
-When an end-user updates the navigation database without first completing the SVM Activation process with ODIS, further access to the navigation
-database will be blocked by the system. A work-around to unblock access to the navigation database following an update is to disable the normal
-activation process by terminating system process vdev-logvolmgr shortly after it starts and creates regular file /mnt/lvm/acios_db.ini in the QNX
-filesystem, as described by Keldo in early 2014.
+When an end-user updates the navigation database without first completing the SVM - Activation process with ODIS and generating a new FSC file for
+the database release, further access to the navigation database will be blocked by the system. A work-around to unblock access to the navigation
+database following an update is to disable the normal activation process by terminating system process vdev-logvolmgr shortly after it starts and
+creates regular file /mnt/lvm/acios_db.ini in the QNX filesystem, as described by Keldo in early 2014.
 
 A common approach used by so-called "activator" SD card scripts is to start a background sub-shell at system startup that waits for the
 appearance of regular file /mnt/lvm/acios_db.ini and terminates process vdev-logvolmgr after a brief wait. The shell commands for the background
@@ -25,4 +25,6 @@ early in the boot process on both 3G High and Plus systems. The purpose of the s
 
 To install the navigation database unblocker patch, extract the ZIP archive to a full-size FAT32 SD card.  After the MMI system is running fully,
 insert the SD card into an available (i.e., empty) SD slot and follow the prompts on the MMI screen.  Inspection of the log file created on the
-SD card is recommended (though not required).  Restart the MMI system.
+SD card is recommended (though not required).  Restart the MMI system.  Since the patch disables the normal navigation database activation process
+permanently (or until the ifs-root flash filesystem is re-imaged due to a software update), the patch is not needed following subsequent navigation
+database updates.
