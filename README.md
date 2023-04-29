@@ -1,11 +1,12 @@
 # MMI3G-Navdb-Unblocker
 Patch MMI3G/3GP systems to unblock access to an updated navigation database.
 
-As delivered from the factory, MMI 3G (High) and Plus systems navigation databases are activated with an FSC file stored in /mnt/efs-persist/FSC.
+As delivered from the factory, MMI 3G (High) and Plus systems navigation databases are activated with an encoded FSC file stored in /mnt/efs-persist/FSC. This FSC file is specific to the database release as defined in the PKG file of the database.
+
 When an end-user updates the navigation database without first completing the SVM - Activation process with ODIS and generating a new FSC file for
 the database release, further access to the navigation database will be blocked by the system. A work-around to unblock access to the navigation
 database following an update is to disable the normal activation process by terminating system process vdev-logvolmgr shortly after it starts and
-creates regular file /mnt/lvm/acios_db.ini in the QNX filesystem, as described by Keldo in early 2014.
+creates regular file /mnt/lvm/acios_db.ini in the QNX filesystem, as described by Keldo in early 2016.
 
 A common approach used by so-called "activator" SD card scripts is to start a background sub-shell at system startup that waits for the
 appearance of regular file /mnt/lvm/acios_db.ini and terminates process vdev-logvolmgr after a brief wait. The shell commands for the background
