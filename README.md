@@ -26,6 +26,6 @@ early in the boot process on both 3G High and Plus systems. The purpose of the s
 
 To install the navigation database unblocker patch, extract the ZIP archive to a full-size FAT32 SD card.  After the MMI system is running fully,
 insert the SD card into an available (i.e., empty) SD slot and follow the prompts on the MMI screen.  Inspection of the log file created on the
-SD card is recommended (though not required).  Restart the MMI system.  Since the patch disables the normal navigation database activation process
+SD card is recommended (though not required).  *Restart the MMI system for the patch to take effect*.  Since the patch disables the normal navigation database activation process
 permanently (or until the ifs-root flash filesystem is re-imaged due to a software update), the patch is not needed following subsequent navigation
 database updates.
