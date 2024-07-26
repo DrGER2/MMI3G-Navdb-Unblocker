@@ -1,10 +1,11 @@
 #!/bin/ksh
 
+# 20240726 drger; Update 2: Fix FSCBackup copy and FSC removal (credit awooganl)
 # 20230404 drger; Update 1: Remove FSC(s) from /HBpersistence.
 # 20221225 drger; New MMI3G NavUnblocker installer script.
 
 # Script startup:
-xversion=v240214
+xversion=v240726
 showScreen ${SDLIB}/navdbpatch-0.png
 touch ${SDPATH}/.started
 xlogfile=${SDPATH}/run-$(getTime).log
@@ -65,12 +66,12 @@ else
   cp -v ${mep}/FSC/*.fsc ${SDVAR}/
   cp -v ${mep}/navi/db/acios_db.ini ${SDVAR}/
   mkdir ${SDVAR}/FSCBackup
-  cp -v /mnt/efs-extended/FSCBackup/*.fsc ${SDVAR}/FSCBackup/
+  cp -v /mnt/efs-extended/backup/FSCBackup/*.fsc ${SDVAR}/FSCBackup/
 
   # Remove FSC files in /mnt/efs-persist, only, for DTC 03623:
   echo; echo "[ACTI] Remove FSC files from /HBpersistence:"
-  rm -v ${mep}/FSC/*.fsc
-  [ "$MUVER" = MMI3GP ] && rm -v ${mep}/FSC/cache/*.fsc
+  rm -f -v ${mep}/FSC/*.fsc
+  [ "$MUVER" = MMI3GP ] && rm -f -v ${mep}/FSC/cache/*.fsc
 fi
 
 # Script cleanup:
